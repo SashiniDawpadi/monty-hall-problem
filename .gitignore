@@ -77,3 +77,4 @@ _ReSharper.Caches/
 *.swp
 *.swo
 Thumbs.db
+.fake
