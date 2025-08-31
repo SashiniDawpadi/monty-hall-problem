@@ -91,9 +91,13 @@ mat-card-content {
   .bars {
     flex-direction: column;
     gap: 0.25rem;
+    width: 100%;
   }
   .bar {
     height: 22px;
     font-size: 0.95rem;
+    width: 100%;
+    min-width: 0;
+    box-sizing: border-box;
   }
 }
