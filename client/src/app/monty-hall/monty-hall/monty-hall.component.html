@@ -1,23 +1,59 @@
 <div class="container">
-  <h1>Monty Hall Simulator</h1>
-  <form [formGroup]="montyHallForm" (submit)="runSimulator()" class="card">
-    <label>
-      Number of simulations
-      <input type="number" [formControl]="games" />
-    </label>
-    <label class="switch">
-      <input type="checkbox" [formControl]="switchDoor" />
-      <span>Switch door</span>
-    </label>
+  <mat-card appearance="outlined">
+    <mat-card-title>Monty Hall Simulator</mat-card-title>
+    <mat-card-content>
+      <form [formGroup]="montyHallForm" (submit)="runSimulator()">
+        <div>
+          <mat-form-field appearance="outline">
+            <mat-label> Number of simulations</mat-label>
+            <input
+              matInput
+              type="number"
+              placeholder="Number of games"
+              formControlName="games"
+            />
+            <mat-error
+              *ngIf="
+                montyHallForm.controls['games'].errors &&
+                montyHallForm.controls['games'].hasError('required')
+              "
+              >Number of games is required</mat-error
+            >
+            <mat-error
+              *ngIf="
+                montyHallForm.controls['games'].errors &&
+                montyHallForm.controls['games'].hasError('min')
+              "
+              >Number should be greater than 1</mat-error
+            >
+            <mat-error
+              *ngIf="
+                montyHallForm.controls['games'].errors &&
+                montyHallForm.controls['games'].hasError('max')
+              "
+              >Number should be lower than 5000000</mat-error
+            >
+          </mat-form-field>
+        </div>
+        <div>
+          <mat-checkbox formControlName="switchDoor">
+            <span>Switch door </span></mat-checkbox
+          >
+        </div>
+        <button
+          type="submit"
+          mat-raised-button
+          [disabled]="loading || montyHallForm.invalid"
+        >
+          {{ loading ? "Running..." : "Run simulation" }}
+        </button>
 
-    <button type="submit" [disabled]="loading || montyHallForm.invalid">
-      {{ loading ? "Running..." : "Run simulation" }}
-    </button>
-
-    <div class="hint">
-      Tip : Try 100,000 - 1,000,000 to see the paradox clearly
-    </div>
-  </form>
+        <div class="hint">
+          Tip : Try 100,000 - 1,000,000 to see the paradox clearly
+        </div>
+      </form>
+    </mat-card-content>
+  </mat-card>
 
   <div *ngIf="result" class="results card">
     <h2>Results</h2>
@@ -54,7 +90,9 @@
       <div
         class="bar losses"
         [style.width.%]="(result.losses / result.games) * 100"
-      ></div>
+      >
+        Losses
+      </div>
     </div>
   </div>
 </div>

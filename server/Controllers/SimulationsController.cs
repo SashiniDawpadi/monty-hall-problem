@@ -15,7 +15,7 @@ public class SimulationsController : ControllerBase
     [HttpPost]
     public ActionResult<SimulationResult> Post(SimulationRequest request)
     {
-        if (request.Games <= 0 || request.Games > 5_000_000)
+        if (request.Games <= 0 || request.Games > 5000000)
             return BadRequest("Games must be between 1 and 5,000,000.");
 
         var (wins, losses) = _sim.Run(request.Games, request.SwitchDoor);
