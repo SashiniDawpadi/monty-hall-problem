@@ -1,7 +1,6 @@
 .container {
   max-width: 800px;
   margin: 2rem auto;
-  font-family: Inter, system-ui, Arial, sans-serif;
 }
 
 mat-card {
@@ -15,7 +14,8 @@ mat-card-title {
 }
 
 mat-card-content {
-  padding-top: 20px;
+  text-align: center;
+  padding-top: 30px;
 }
 
 .hint {
@@ -45,7 +45,7 @@ mat-card-content {
 
 .bar {
   height: 28px;
-  border-radius: 8px;
+  border-radius: 5px;
   display: flex;
   align-items: center;
   justify-content: center;

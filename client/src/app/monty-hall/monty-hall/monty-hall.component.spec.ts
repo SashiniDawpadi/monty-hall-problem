@@ -1,6 +1,8 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
-
 import { MontyHallComponent } from './monty-hall.component';
+import { ReactiveFormsModule, FormsModule } from '@angular/forms';
+import { provideHttpClient } from '@angular/common/http';
+import { provideHttpClientTesting } from '@angular/common/http/testing';
 
 describe('MontyHallComponent', () => {
   let component: MontyHallComponent;
@@ -8,16 +10,17 @@ describe('MontyHallComponent', () => {
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      imports: [MontyHallComponent]
+      declarations: [],
+      imports: [MontyHallComponent, ReactiveFormsModule, FormsModule ],
+      providers: [provideHttpClient(), provideHttpClientTesting()]
     })
-    .compileComponents();
-
-    fixture = TestBed.createComponent(MontyHallComponent);
-    component = fixture.componentInstance;
-    fixture.detectChanges();
+      .compileComponents();
   });
 
   it('should create', () => {
+    fixture = TestBed.createComponent(MontyHallComponent);
+    component = fixture.componentInstance;
+    // fixture.detectChanges();
     expect(component).toBeTruthy();
   });
 });

@@ -76,20 +76,20 @@
       </div>
       <div>
         <strong>Win rate</strong>
-        <div>{{ result.winRatePercent }}%</div>
+        <div>{{ result.winRatePercent}}%</div>
       </div>
     </div>
 
     <div class="bars">
       <div
         class="bar wins"
-        [style.width.%]="(result.wins / result.games) * 100"
+        [style.width.%]="(result.winRatePercent)"
       >
         Wins
       </div>
       <div
         class="bar losses"
-        [style.width.%]="(result.losses / result.games) * 100"
+        [style.width.%]="100-(result.winRatePercent)"
       >
         Losses
       </div>
